@@ -54,13 +54,10 @@ if __name__ == "__main__":
         data["test"] = data["test"][:int(len(data["test"])*float(portion))]
 
         def dict_to_list(data_dict):
-            # 获取字典中任意一个列表的长度
             list_length = len(next(iter(data_dict.values())))
-            
-            # 创建一个新的列表，长度与字典中的列表长度一致
             result_list = [[] for _ in range(list_length)]
             
-            # 遍历字典的每个键和值
+            # iterate
             for key in sorted(data_dict.keys()):
                 for i in range(list_length):
                     result_list[i].append(data_dict[key][i])
@@ -120,16 +117,17 @@ if __name__ == "__main__":
             n_times_abstain_english[N] = abstain_flags
             N -= 1 
     # print(n_times_abstain_x)
-    # Y(X) 
+
+    # get the score of NDE
     N = args.iter_number
     n_times_lists_x = dict_to_list(n_times_abstain_x)
     y_base = [[1/2 for _ in range(2)] for _ in range(len(n_times_lists_x))]    
     x_distribution = lm_utils.distribution(n_times_lists_x)
     ndes = lm_utils.JSD(x_distribution, y_base)
     
-    # casual judge
+    # causal judge
     from collections import Counter
-    casual_abstain_flags = []
+    causal_abstain_flags = []
     def most_frequesnt_element(input):
         frequency_count = Counter(input)
         most_common_element, most_common_count = frequency_count.most_common(2)[0]
@@ -142,15 +140,15 @@ if __name__ == "__main__":
             return most_common_element, most_common_count, True
         elif most_common_count == most_common_count_2:
             return most_common_element, most_common_count, False 
- 
     assert len(ndes) == len(data["test"])
+ 
     tie_or_nde_flags = []
     tie_or_nde = []
     tie_nde_list = []
     related_feedbacks = []
     tie_related_maps = []
     
-    print("--------get feedback and review with feedback [tie]----------")
+    print("--------get feedback and review with feedback [TIE]----------")
     for d, i in tqdm(zip(data["test"], range(len(data["test"])))):
         if args.related == "two":
             def calculate_related_language(d, prompt_feedback_related, N, answer):
@@ -208,7 +206,7 @@ if __name__ == "__main__":
                 abstain_related_flag_3, abstain_related_score_3, related_feedback_3 = calculate_related_language(d, prompt_feedback_related[2], N, answers[i])
                 related_feedbacks.append([related_feedback_1, related_feedback_2, related_feedback_3])
 
-                # calculate new tie
+                # calculate new TIE score
                 abstain_related_1 = dict_to_list(abstain_related_flag_1)
                 related1_feedback_n_distributions = lm_utils.distribution(abstain_related_1)
                 ties_related1 = lm_utils.JSD(related1_feedback_n_distributions, [x_distribution[i]])
@@ -226,6 +224,8 @@ if __name__ == "__main__":
                             'tie_related2': [abstain_related_2[0], ties_related2[0]],
                             'tie_related3': [abstain_related_3[0], ties_related3[0]],
                         }
+
+                # record the process
                 this_tie_or_nde_flags_string = ""
                 join_voted = []
 
@@ -234,24 +234,24 @@ if __name__ == "__main__":
                 else:
                     join_voted = abstain_related_1[0] + abstain_related_2[0] + abstain_related_3[0]
                 if join_voted == []:
-                    casual_abstain_flags.append(most_frequesnt_element(n_times_lists_x[i])[0])
+                    causal_abstain_flags.append(most_frequesnt_element(n_times_lists_x[i])[0])
                     this_tie_or_nde_flags_string += "ndes"
                 else:
                     this_tie_or_nde_flags_string += "related"
                     majorty_voted, count, flag = most_frequesnt_element(join_voted)
                     if flag:
-                        casual_abstain_flags.append(majorty_voted)
+                        causal_abstain_flags.append(majorty_voted)
                     else:
                         rdm = random.randint(0,1)
-                        casual_abstain_flags.append(rdm)
+                        causal_abstain_flags.append(rdm)
                         this_tie_or_nde_flags_string += "& random"
                 tie_or_nde_flags.append(this_tie_or_nde_flags_string)
                 tie_related_maps.append(tie_related_abstain_map) 
             except Exception as e:
-                print("sth wrong, pass the error")
+                print("sth wrong, pass the error, record nothing")
                 print(e)
                 related_feedbacks.append([])
-                casual_abstain_flags.append(1)
+                causal_abstain_flags.append(1)
                 this_tie_or_nde_flags_string = "error"
                 tie_related_abstain_map = {
                             'tie_related1': [],
@@ -261,19 +261,18 @@ if __name__ == "__main__":
                 this_tie_or_nde_flags_string = ""
                 tie_or_nde_flags.append(this_tie_or_nde_flags_string)
                 tie_related_maps.append(tie_related_abstain_map) 
+    # the causal abstain decisions
+    print(causal_abstain_flags)
 
-
-    print(casual_abstain_flags)
-
-    casual_abstain_scores = None
+    causal_abstain_scores = None
     if local_flag:
+        # record in differnent file, can remove/revise accordingly
         if args.test_or_evaluation == "test":
-
-            with open("preds_test/" + args.related + str(N) + model_name + "_" + dataset + "_" + speak + "_casual_details.json", "w") as f:
-                json.dump({"ndes":ndes,"n_times_abstain_x":n_times_lists_x, "correct_flags": correct_flags, "casual_abstain_flags": casual_abstain_flags, "casual_abstain_scores": casual_abstain_scores, "tie_ndes_list":tie_nde_list, "tie_or_nde":tie_or_nde, "tie_or_nde_flags":tie_or_nde_flags, "related_fb": related_feedbacks, "tie_related_maps": tie_related_maps}, f, indent=4)
+            with open("preds_test/" + args.related + str(N) + model_name + "_" + dataset + "_" + speak + "_causal_details.json", "w") as f:
+                json.dump({"ndes":ndes,"n_times_abstain_x":n_times_lists_x, "correct_flags": correct_flags, "causal_abstain_flags": causal_abstain_flags, "causal_abstain_scores": causal_abstain_scores, "tie_ndes_list":tie_nde_list, "tie_or_nde":tie_or_nde, "tie_or_nde_flags":tie_or_nde_flags, "related_fb": related_feedbacks, "tie_related_maps": tie_related_maps}, f, indent=4)
         else:
-            with open("preds/" +args.related + str(N) + model_name + "_" + dataset + "_" + speak + "_casual_details.json", "w") as f:
-                json.dump({"ndes":ndes,"n_times_abstain_x":n_times_lists_x, "correct_flags": correct_flags, "casual_abstain_flags": casual_abstain_flags, "casual_abstain_scores": casual_abstain_scores, "tie_ndes_list":tie_nde_list, "tie_or_nde":tie_or_nde, "tie_or_nde_flags":tie_or_nde_flags, "related_fb": related_feedbacks, "tie_related_maps": tie_related_maps}, f, indent=4)
+            with open("preds/" +args.related + str(N) + model_name + "_" + dataset + "_" + speak + "_causal_details.json", "w") as f:
+                json.dump({"ndes":ndes,"n_times_abstain_x":n_times_lists_x, "correct_flags": correct_flags, "causal_abstain_flags": causal_abstain_flags, "causal_abstain_scores": causal_abstain_scores, "tie_ndes_list":tie_nde_list, "tie_or_nde":tie_or_nde, "tie_or_nde_flags":tie_or_nde_flags, "related_fb": related_feedbacks, "tie_related_maps": tie_related_maps}, f, indent=4)
         
     print("------------------")
     print("Approach: causal")
@@ -281,5 +280,5 @@ if __name__ == "__main__":
     print("Dataset:", dataset)
     print("Language:", speak)
     print("Type:", approach_type)
-    print(metrics.compute_metrics(correct_flags, casual_abstain_flags, casual_abstain_scores))
+    print(metrics.compute_metrics(correct_flags, causal_abstain_flags, causal_abstain_scores))
     print("------------------")
