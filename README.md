@@ -58,22 +58,6 @@ Parameters to save file, decide test or evaluate (can be revised accordingly):
 ```
 
 
-### The baselines
-The baselines are named: approach-<name>.py file, which contains the implementation of the corresponding approach. Shared parameters for each approach :
-```
--m MODEL, --model MODEL
-                        which language model to use: "llama", "gpt3.5", "gpt4" etc.
--d DATASET, --dataset DATASET
-                        which dataset in data/: "mmlu", "hellaswag"
--o PORTION, --portion PORTION
-                        portion of the dataset to use, 0-1
--l LOCAL, --local LOCAL
-                        local copy of preds saved
-```
-An example:
-```
-python approach-conflict.py -m llama -d mmlu -s kn -l True -o 0.5
-```
 
 ### Models & Metrics
 lm_utils.py provides inference code for LLMs, and the method of calculate the score via Jensen-Shannon Divergence (JSD) in Section3.2 of our paper. You can add the models if need. metrics.py provides the implementation of AbstainQA metrics.
