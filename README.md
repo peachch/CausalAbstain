@@ -20,8 +20,7 @@ ollama serve
 ```
 ollama run llama3.2
 ```
-
-The Gpt-4o and Claude need to apply by api-key. Use the following command or set in the code.
+To use GPT-4o and Claude via API keys, set up your environment or code to include these keys.
 ```
 export OPENAI_API_KEY="YOUR_KEY"
 ```
