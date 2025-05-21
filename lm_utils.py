@@ -49,15 +49,15 @@ def JSD(distribution1, distribution2):
         p = np.array(distribution1[i])
         q = np.array(distribution2[i])
         
-        # 计算平均分布
+        # calculate distribution average
         m = 0.5 * (p + q)
         
-        # 为了避免 log(0) 的情况，使用 np.clip 限制值的范围
+        # use np.clip to set the scope
         p = np.clip(p, 1e-10, None)
         q = np.clip(q, 1e-10, None)
         m = np.clip(m, 1e-10, None)
         
-        # 计算 JSD
+        # JSD
         jsd = 0.5 *(np.sum(p* np.log(p / m)) + np.sum(q * np.log(q / m)))
         jsds.append(jsd)
     return jsds
@@ -73,8 +73,6 @@ def llm_init(model_name):
         # device = "cpu"
         tokenizer = AutoTokenizer.from_pretrained("CohereForAI/aya-101")
         model = AutoModelForSeq2SeqLM.from_pretrained("CohereForAI/aya-101", device_map="auto")
-
-# 定义输入文本
 
 
     if model_name == "gpt3.5" or model_name == "gpt4"or model_name =="claude":
@@ -119,10 +117,6 @@ def llm_response(prompt, model_name, probs = False, temperature = 0.1, max_new_t
         token_probs = {}
         for tok, score in zip(generated_tokens[0], transition_scores[0]):
             token_probs[tokenizer.decode(tok).strip()] = np.exp(score.item())
-        if probs:
-            return generated_text, token_probs
-        else:
-            return generated_text
 
     
     elif model_name == "gpt3.5":
@@ -141,10 +135,6 @@ def llm_response(prompt, model_name, probs = False, temperature = 0.1, max_new_t
 
         for thing in response['choices'][0]['logprobs']["content"]:
             token_probs[thing["token"]] = np.exp(thing["logprob"])
-        if probs:
-            return response['choices'][0]['message']['content'].strip(), token_probs
-        else:
-            return response['choices'][0]['message']['content'].strip()
 
     elif model_name == "mistral":
         response = chat(model='mistral', messages=[
