@@ -60,7 +60,7 @@ Parameters to save file, decide test or evaluate (can be revised accordingly):
 
 
 ### Models & Metrics
-lm_utils.py provides inference code for LLMs, and the method of calculating the score via Jensen-Shannon Divergence (JSD) in Section 3.2 of our paper. You can add the models if need. metrics.py provides the implementation of AbstainQA metrics.
+lm_utils.py provides inference code for LLMs, and the method of calculating the score via Jensen-Shannon Divergence (JSD) in Section 3.2 of our paper. You can add the models if needed. metrics.py provides the implementation of AbstainQA metrics.
 
 ### Baselines
 The baseline comparisons in our paper are detailed in the baselines/ file. Please refer to baselines/baselines.md for the relevant information.
