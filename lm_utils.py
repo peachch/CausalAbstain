@@ -79,6 +79,9 @@ def llm_init(model_name):
         device = "cuda"
         openai.api_base = "api"
         openai.api_key = "your-key"
+        # openai.api_base = "https://openkey.cloud/v1"
+        # openai.api_key = "sk-QTZOwEu2pTuJR1660a95921f1e8c46E2A9D2099aA271381c"
+        # openai.api_key = "sk-anQGO9X0r1zNkkqcCf29D03eEbDd4e37AbF1Ba986863Da53"
 
 def wipe_model():
     global device
@@ -133,8 +136,9 @@ def llm_response(prompt, model_name, probs = False, temperature = 0.1, max_new_t
         time.sleep(0.1)
         token_probs = {}
 
-        for thing in response['choices'][0]['logprobs']["content"]:
-            token_probs[thing["token"]] = np.exp(thing["logprob"])
+        # for thing in response['choices'][0]['logprobs']["content"]:
+        #     token_probs[thing["token"]] = np.exp(thing["logprob"])
+        return response['choices'][0]['message']['content'].strip()
 
     elif model_name == "phi":
 
@@ -172,10 +176,10 @@ def llm_response(prompt, model_name, probs = False, temperature = 0.1, max_new_t
                 )
         time.sleep(0.1)
         token_probs = {}
-        if probs:
-            return response['choices'][0]['message']['content'].strip(), token_probs
-        else:
-            return response['choices'][0]['message']['content'].strip()
+        # if probs:
+        #     return response['choices'][0]['message']['content'].strip(), token_probs
+        # else:
+        return response['choices'][0]['message']['content'].strip()
 
 def answer_parsing(response):
     # mode 1: answer directly after

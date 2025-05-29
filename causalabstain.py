@@ -44,7 +44,8 @@ if __name__ == "__main__":
         "ta": ["Arabic", "Hindi", "Bengali","Chinese", "Italian", "Dutch","Malayalam","Marathi", "Telugu"],
         "ne": ["Kanaada", "Telugu", "Hindi","Nepali","English"],
         "te": ["Kannada", "Russian", "Catalan","Telugu","English"],
-        "kn": ["Telugu", "Malaayalam", "Tamil","Kannada","English"]
+        "kn": ["Telugu", "Malaayalam", "Tamil","Kannada","English"],
+        "it": ["Catalan", "Romanian", "Ukrainian","Italian","English"]
     }
     
     with open("data/" + dataset + "/" + dataset + "_" + speak + ".json", "r") as f:
@@ -150,7 +151,7 @@ if __name__ == "__main__":
     
     print("--------get feedback and review with feedback [TIE]----------")
     for d, i in tqdm(zip(data["test"], range(len(data["test"])))):
-        if args.related == "two":
+        if args.related == "three":
             def calculate_related_language(d, prompt_feedback_related, N, answer):
                 prompt_feedback_experts = prompt_feedback_related
 
@@ -196,10 +197,10 @@ if __name__ == "__main__":
 
             prompt_feedback = original_prompt + " " + answers[i].strip() + "\nPlease review the proposed answer and provide a paragraph of feedback on its correctness. Feedback should be in <language>.\nFeedback:"
             prompt_feedback_related = []
-            for k in range(5):
+            for k in range(3):
                 specified_language = language_related_dict[speak][k]
                 prompt_feedback_related.append(prompt_feedback.replace("<language>", specified_language))
-            assert len(prompt_feedback_related) == 5 
+            assert len(prompt_feedback_related) == 3 
             try:
                 abstain_related_flag_1, abstain_related_score_1, related_feedback_1 = calculate_related_language(d, prompt_feedback_related[0], N, answers[i])
                 abstain_related_flag_2, abstain_related_score_2, related_feedback_2 = calculate_related_language(d, prompt_feedback_related[1], N, answers[i])

@@ -96,10 +96,10 @@ def compute_metrics(correct_flags, abstain_flags, abstain_scores = None):
         'reliable_accuracy': reliable_accuracy,
         'effective_reliability': effective_reliability,
         'abstain_accuracy': abstain_accuracy,
-        'abstain_precision': abstain_precision,
-        'abstain_recall': abstain_recall,
-        'abstain_ece': bucket_ece,
-        'abstain_rate': abstain_rate
+        # 'abstain_precision': abstain_precision,
+        # 'abstain_recall': abstain_recall,
+        # 'abstain_ece': bucket_ece,
+        # 'abstain_rate': abstain_rate
     }
 
 # correct_flags = [1, 1, 0, 0, 1, 1, 0, 0, 1, 1]
