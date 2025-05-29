@@ -77,8 +77,8 @@ def llm_init(model_name):
 
     if model_name == "gpt3.5" or model_name == "gpt4"or model_name =="claude":
         device = "cuda"
-        openai.api_base = "https://openkey.cloud/v1"
-        openai.api_key = "sk-anQGO9X0r1zNkkqcCf29D03eEbDd4e37AbF1Ba986863Da53"
+        openai.api_base = "api"
+        openai.api_key = "your-key"
 
 def wipe_model():
     global device
@@ -96,7 +96,7 @@ def wipe_model():
 
 # @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(10))
 def llm_response(prompt, model_name, probs = False, temperature = 0.1, max_new_tokens = 200):
-    if not model_name == "gpt3.5" and not model_name == "gpt4" and not model_name =="claude"and not model_name =="llama" and not model_name=="deepseek"and not model_name=="phi":
+    if not model_name == "gpt3.5" and not model_name == "gpt4" and not model_name =="llama" and not model_name=="phi":
 
         tokenizer.pad_token_id = tokenizer.eos_token_id
         inputs = tokenizer([prompt], return_tensors="pt").to(device)
@@ -136,17 +136,6 @@ def llm_response(prompt, model_name, probs = False, temperature = 0.1, max_new_t
         for thing in response['choices'][0]['logprobs']["content"]:
             token_probs[thing["token"]] = np.exp(thing["logprob"])
 
-    elif model_name == "mistral":
-        response = chat(model='mistral', messages=[
-
-        {
-            'role': 'user',
-            'content': prompt,
-        },
-        ])
-        time.sleep(0.1)
-        token_probs = {}
-        return response['message']['content'].strip()
     elif model_name == "phi":
 
         response = chat(model='phi4', messages=[
@@ -158,8 +147,9 @@ def llm_response(prompt, model_name, probs = False, temperature = 0.1, max_new_t
         time.sleep(0.1)
         token_probs = {}
         return response['message']['content'].strip()
+        
     elif model_name == "llama":
-        # we use ollama to run llama
+        # use ollama to run llama
         response = chat(model='llama3.2', messages=[
         {
             'role': 'user',
@@ -169,34 +159,6 @@ def llm_response(prompt, model_name, probs = False, temperature = 0.1, max_new_t
         time.sleep(0.1)
         token_probs = {}
         return response['message']['content'].strip()
-    elif model_name == "deepseek":
-        response = chat(model='deepseek-r1', messages=[
-        {
-            'role': 'user',
-            'content': prompt,
-        },
-        ])
-        time.sleep(0.1)
-        token_probs = {}
-        return response['message']['content'].strip()
-    elif model_name == "claude":
-
-        response = openai.ChatCompletion.create(
-                    model="claude-3-7-sonnet-20250219",
-                    # model="claude-3-haiku-20240307",
-                    temperature=temperature,
-                    messages=[
-                        {"role": "user", "content": prompt}
-                    ],
-                    max_tokens=max_new_tokens,
-                    logprobs=True,
-                )
-        time.sleep(0.1)
-        token_probs = {}
-        if probs:
-            return response['choices'][0]['message']['content'].strip(), token_probs
-        else:
-            return response['choices'][0]['message']['content'].strip()
     
     elif model_name == "gpt4":
         response = openai.ChatCompletion.create(
