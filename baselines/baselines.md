@@ -1,11 +1,11 @@
 
 ### The baselines
-We follow some of the baselinse from https://github.com/BunsenFeng/M-AbstainQA.
+We follow some of the baselines from https://github.com/BunsenFeng/M-AbstainQA.
 
 The baselines are named: approach-<name>.py file, which contains the implementation of the corresponding approach. Shared parameters for each approach :
 ```
 -m MODEL, --model MODEL
-                        which language model to use: "llama", "gpt3.5", "gpt4" etc.
+                        which language model to use: "llama", "gpt3.5", "gpt4", etc.
 -d DATASET, --dataset DATASET
                         which dataset in data/: "mmlu", "hellaswag"
 -o PORTION, --portion PORTION
