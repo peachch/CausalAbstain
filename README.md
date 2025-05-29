@@ -28,6 +28,7 @@ export OPENAI_API_KEY="YOUR_KEY"
 ### CausalAbstain
 
 ```
+python causalabstain.py -m gpt3.5 -d mmlu -s zh -l true -r three -n 3 -f True -t test -o 0.5
 python causalabstain.py -m llama -d mmlu -s it -l true -r three -n 3 -f True -t test -o 0.5
 
 ```
