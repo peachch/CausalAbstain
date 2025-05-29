@@ -79,9 +79,6 @@ def llm_init(model_name):
         device = "cuda"
         openai.api_base = "api"
         openai.api_key = "your-key"
-        # openai.api_base = "https://openkey.cloud/v1"
-        # openai.api_key = "sk-QTZOwEu2pTuJR1660a95921f1e8c46E2A9D2099aA271381c"
-        # openai.api_key = "sk-anQGO9X0r1zNkkqcCf29D03eEbDd4e37AbF1Ba986863Da53"
 
 def wipe_model():
     global device
