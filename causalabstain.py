@@ -35,18 +35,17 @@ if __name__ == "__main__":
                      "Indonesian", "Arabic", "Hungarian", "Romanian", "Danish", "Slovak", "Ukrainian", "Catalan", "Serbian", "Croatian", "Hindi",
                      "Bengali", "Tamil", "Nepali", "Malayalam", "Marathi", "Telugu", "Kannada", "Deutsch"]
     
-    # revise the language according to your need
+    # revise the language according to your needs
     language_related_dict = {
         "zh": ["Chinese", "Chinese", "Chinese", "English", "Russian", "German", "Italian", "Dutch", "Arabic"],
-        "id": ["English","Catalan", "Russian", "Indonesian", "German"],
-        "ar": ["Chinese", "Italian", "Dutch", "Arbic", "English"],
-        "bn": ["Arabic", "Hindi", "Bengali", "Nepali", "Vietanamese", "English", "Telugu", "kannada", "Russian"],
-        "ta": ["Arabic", "Hindi", "Bengali","Chinese", "Italian", "Dutch","Malayalam","Marathi", "Telugu"],
-        "ne": ["Kanaada", "Telugu", "Hindi","Nepali","English"],
-        "te": ["Kannada", "Russian", "Catalan","Telugu","English"],
-        "kn": ["Telugu", "Malaayalam", "Tamil","Kannada","English"],
-        "it": ["Catalan", "Romanian", "Ukrainian","Italian","English"]
-    }
+        "id": ["Indonesian", "Indonesian", "Indonesian", "Vietnamese", "Bengali", "Tamil", "English", "Russian", "Catalan","Vietnamese", "Catalan", "Russian"],
+        "ar": ["Arabic", "Hindi", "Bengali","English", "Russian", "German", "Chinese", "Italian", "Dutch", "Chinese", "Slovak", "Danish],
+        "bn": ["Arabic", "Hindi","Bengali","Nepali", "Vietnamese", "Hindi","Telugu", "Kannada", "Russian","Hindi", "Telugu", "Nepali"],
+        "ta": ["Arabic","Hindi", "Bengali", "Malayalam", "Marathi", "Telugu", "Malayalam", "Marathi", "Kannada"],
+        "ne": ["Arabic", "Hindi", "Bengali", "Hindi", "Bengali", "Vietnamese", "Kanaada", "Telugu", "Hindi"],
+        "te": ["Arabic", "Hindi", "Bengali", "Hindi", "Tamil", "Malayalam", "Kannada", "Russian", "Catalan", "Kannada","Tamil", "Nepali"],
+        "kn": ["Arabic", "Hindi", "Bengali", "Tamil", "Malayalam", "Marathi","Kannada", "Russian", "Catalan","Telugu", "Malayalam", "Tamil"],
+        "it": ["French", "Slovak", "Hungarian","German", "French", "Hungarian","Chinese","Dutch", "Arabic", "Catalan", "Romanian", "Ukrainian"]
     
     with open("data/" + dataset + "/" + dataset + "_" + speak + ".json", "r") as f:
 
