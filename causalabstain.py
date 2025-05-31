@@ -41,8 +41,7 @@ if __name__ == "__main__":
         "id": ["Indonesian", "Indonesian", "Indonesian", "Vietnamese", "Bengali", "Tamil", "English", "Russian", "Catalan","Vietnamese", "Catalan", "Russian"],
         "ar": ["Arabic", "Hindi", "Bengali","English", "Russian", "German", "Chinese", "Italian", "Dutch", "Chinese", "Slovak", "Danish"],
         "bn": ["Arabic", "Hindi","Bengali","Nepali", "Vietnamese", "Hindi","Telugu", "Kannada", "Russian","Hindi", "Telugu", "Nepali"],
-        "ta": ["Arabic","Hindi", "Bengali", "Malayalam", "Marathi", "Telugu", "Malayalam", "Marathi", "Kannada"],
-        "ne": ["Arabic", "Hindi", "Bengali", "Hindi", "Bengali", "Vietnamese", "Kanaada", "Telugu", "Hindi"],
+        "ne": ["Arabic", "Hindi", "Bengali", "Hindi", "Bengali", "Vietnamese", "Kanaada", "Telugu", "Hindi",", "Romanian", "Telugu","Kannada],
         "te": ["Arabic", "Hindi", "Bengali", "Hindi", "Tamil", "Malayalam", "Kannada", "Russian", "Catalan", "Kannada","Tamil", "Nepali"],
         "kn": ["Arabic", "Hindi", "Bengali", "Tamil", "Malayalam", "Marathi","Kannada", "Russian", "Catalan","Telugu", "Malayalam", "Tamil"],
         "it": ["French", "Slovak", "Hungarian","German", "French", "Hungarian","Chinese","Dutch", "Arabic", "Catalan", "Romanian", "Ukrainian"]
