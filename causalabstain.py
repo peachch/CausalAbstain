@@ -37,9 +37,9 @@ if __name__ == "__main__":
     
     # revise the language according to your needs
     language_related_dict = {
-        "zh": ["Chinese", "Chinese", "Chinese", "English", "Russian", "German", "Italian", "Dutch", "Arabic"],
+        "zh": ["Chinese", "Chinese", "Chinese", "English", "Russian", "German", "Italian", "Dutch", "Arabic", "Arabic", "Slovak", "Danish"],
         "id": ["Indonesian", "Indonesian", "Indonesian", "Vietnamese", "Bengali", "Tamil", "English", "Russian", "Catalan","Vietnamese", "Catalan", "Russian"],
-        "ar": ["Arabic", "Hindi", "Bengali","English", "Russian", "German", "Chinese", "Italian", "Dutch", "Chinese", "Slovak", "Danish],
+        "ar": ["Arabic", "Hindi", "Bengali","English", "Russian", "German", "Chinese", "Italian", "Dutch", "Chinese", "Slovak", "Danish"],
         "bn": ["Arabic", "Hindi","Bengali","Nepali", "Vietnamese", "Hindi","Telugu", "Kannada", "Russian","Hindi", "Telugu", "Nepali"],
         "ta": ["Arabic","Hindi", "Bengali", "Malayalam", "Marathi", "Telugu", "Malayalam", "Marathi", "Kannada"],
         "ne": ["Arabic", "Hindi", "Bengali", "Hindi", "Bengali", "Vietnamese", "Kanaada", "Telugu", "Hindi"],
