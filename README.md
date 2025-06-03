@@ -1,6 +1,6 @@
 # CausalAbstain Repository
 This is the repo for the paper: 	
-CausalAbstain: Enhancing Multilingual LLMs with Causal Reasoning for Trustworthy (ACL-2025)
+CausalAbstain: Enhancing Multilingual LLMs with Causal Reasoning for Trustworthy (ACL-2025 findings) 
 
 ```
 conda env create -f causalabstain.yaml
