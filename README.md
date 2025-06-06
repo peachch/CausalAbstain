@@ -66,3 +66,13 @@ lm_utils.py provides inference code for LLMs, and the method of calculating the 
 
 ### Baselines
 The baseline comparisons in our paper are detailed in the baselines/ file. Please refer to baselines/baselines.md for the relevant information.
+
+
+```
+@article{sun2025causalabstain,
+  title={CausalAbstain: Enhancing Multilingual LLMs with Causal Reasoning for Trustworthy Abstention},
+  author={Sun, Yuxi and Zuo, Aoqi and Gao, Wei and Ma, Jing},
+  journal={arXiv preprint arXiv:2506.00519},
+  year={2025}
+}
+```
