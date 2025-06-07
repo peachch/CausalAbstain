@@ -1,5 +1,6 @@
 # CausalAbstain: Enhancing Multilingual LLMs with Causal Reasoning for Trustworthy
-![](https://github.com/peachch/CausalAbstain/edit/master/README.md)  
+![Dynamic Regex Badge](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fgithub.com%2Fpeachch%2FCausalAbstain&search=Every%20(.*%3F)%20it%20serves%20(%3F%3Camount%3E.*%3F)%20images)
+ 
 
 ```
 conda env create -f causalabstain.yaml
