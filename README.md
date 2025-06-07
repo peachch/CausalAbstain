@@ -3,6 +3,8 @@
 ![Page Views](https://komarev.com/ghpvc/?username=peachch&label=Page%20Views)
 ![GitHub stars](https://img.shields.io/github/stars/peachch/CausalAbstain?style=social)
 
+
+## Getting Started
 ```
 conda env create -f causalabstain.yaml
 conda activate causal
