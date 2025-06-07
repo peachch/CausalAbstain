@@ -11,6 +11,7 @@
   <img src="https://github.com/peachch/CausalAbstain/blob/master/imgs/multilingual_combine%20(1).png" alt="Logo" width="300"/>
 </p>
 
+#### This repository is for CausalAbstain. For more details, please refer to our [paper](https://arxiv.org/abs/2506.00519).
 
 ## Abstract
 Large Language Models (LLMs) often exhibit  knowledge disparities across languages. Encouraging LLMs to abstain when faced with knowledge gaps is a promising strategy to reduce hallucinations in multilingual settings. Current abstention strategies for multilingual scenarios primarily rely on generating feedback in various languages using LLMs and performing self-reflection. However, these methods can be adversely impacted by inaccuracies and biases in the generated feedback. To address this, from a causal perspective, we introduce CausalAbstain, a method that helps LLMs determine whether to utilize multiple generated feedback responses and how to identify the most useful ones. Extensive experiments demonstrate that CausalAbstain effectively selects helpful feedback and enhances abstention decisions with interpretability in both native language (CASUALNATIVE) and multilingual (CAUSAL-MULTI) settings, outperforming strong baselines on two benchmark datasets covering encyclopedic and commonsense knowledge QA tasks.  Our code and data are open-sourced at https://github.com/peachch/CausalAbstain.
