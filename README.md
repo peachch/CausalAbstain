@@ -1,6 +1,5 @@
-# CausalAbstain Repository
-This is the repo for the paper: 	
-CausalAbstain: Enhancing Multilingual LLMs with Causal Reasoning for Trustworthy (ACL-2025 findings) 
+# CausalAbstain: Enhancing Multilingual LLMs with Causal Reasoning for Trustworthy
+![](https://github.com/peachch/CausalAbstain/edit/master/README.md)  
 
 ```
 conda env create -f causalabstain.yaml
@@ -67,6 +66,9 @@ lm_utils.py provides inference code for LLMs, and the method of calculating the 
 ### Baselines
 The baseline comparisons in our paper are detailed in the baselines/ file. Please refer to baselines/baselines.md for the relevant information.
 
+
+### Citation
+If you find our work helpful, please kindly cite our paper:
 
 ```
 @article{sun2025causalabstain,
