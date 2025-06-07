@@ -1,9 +1,17 @@
 # CausalAbstain: Enhancing Multilingual LLMs with Causal Reasoning for Trustworthy
-[![arXiv](https://img.shields.io/badge/arXiv-2506.00519-b31b1b.svg)](https://arxiv.org/abs/2506.00519)
-![Page Views](https://komarev.com/ghpvc/?username=peachch&label=Page%20Views)
-![GitHub stars](https://img.shields.io/github/stars/peachch/CausalAbstain?style=social)
+<p align="center">
+  <a href="https://arxiv.org/abs/2506.00519">
+    <img src="https://img.shields.io/badge/arXiv-2506.00519-b31b1b.svg" alt="arXiv">
+  </a>
+  <img src="https://komarev.com/ghpvc/?username=peachch&label=Page%20Views" alt="Page Views">
+  <img src="https://img.shields.io/github/stars/peachch/CausalAbstain?style=social" alt="GitHub stars">
+</p>
 
+<p align="center">
+  <img src="https://github.com/peachch/CausalAbstain/blob/master/imgs/multilingual_combine%20(1).png" alt="Logo" width="300"/>
+</p>
 
+     
 ## Getting Started
 ```
 conda env create -f causalabstain.yaml
