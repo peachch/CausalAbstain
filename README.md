@@ -1,5 +1,7 @@
 # CausalAbstain: Enhancing Multilingual LLMs with Causal Reasoning for Trustworthy
-![PageView](https://visitor-badge.laobi.icu/badge?page_id=peachch.CausalAbstain)
+[![arXiv](https://img.shields.io/badge/arXiv-2506.00519-b31b1b.svg)](https://arxiv.org/abs/2506.00519)
+![Page Views](https://komarev.com/ghpvc/?username=peachch&label=Page%20Views)
+![GitHub stars](https://img.shields.io/github/stars/peachch/CausalAbstain?style=social)
 
 ```
 conda env create -f causalabstain.yaml
