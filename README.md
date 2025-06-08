@@ -5,6 +5,7 @@
   </a>
   <img src="https://komarev.com/ghpvc/?username=peachch&label=Page%20Views&color=00FF00" alt="Page Views">
   <img src="https://img.shields.io/github/stars/peachch/CausalAbstain?style=social" alt="GitHub stars">
+  <img src="https://img.shields.io/github/forks/peachch/CausalAbstain?style=social" alt="GitHub forks">
 </p>
 
 <p align="center">
